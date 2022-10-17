@@ -1,0 +1,112 @@
+package game;
+
+import java.util.Random;
+
+import org.newdawn.slick.*;
+
+public class Pineapple implements GameObject{
+
+	Random r=new Random();
+	int xinit=r.nextInt(1400);
+	int xloc;
+	Random R=new Random();
+int random1=R.nextInt(2);
+    int yloc=1300;
+    int flag=0;
+    int f1=0;
+    int f2=0;
+
+	Boolean movingup=true;
+	Boolean sliced=false;
+
+
+public void setXLocation(int x) {
+  
+	Random r=new Random();
+	random1=r.nextInt(2);	
+}
+public int getXLocation() {
+	if(random1==0)
+	{
+		random1=3;
+		xinit=1000+r.nextInt(300);
+		xloc=xinit;
+	}
+	else if(random1==1){
+		random1=3;
+		xinit=r.nextInt(300);
+		xloc=xinit;
+	}
+	if((xinit<300 && xloc<1300 && f1==0) || (f2==1) )
+	{xloc+=10;
+	
+	if(xloc>=1300)
+		{f1=1;
+		f2=0;
+		
+		}
+	
+	}
+	
+	else if((xinit>300 && xloc>0 && f2==0) || (f1==1) ) 
+		{xloc-=10;
+		if(xloc<=0)
+	      {f2=1;
+	      f1=0;
+	      }
+		}
+	return  xloc;
+}
+public void setYLocation(int y) {
+    this.yloc = y;
+}
+
+public void slice(boolean s) {
+
+	this.sliced=s;
+}
+
+
+public boolean isSliced() {
+
+	return sliced;
+	
+}
+
+public int getYLocation() {
+
+	return yloc;
+}
+
+public boolean isMovingUp() {
+
+	return movingup;
+}
+public int getxloc() {
+	// TODO Auto-generated method stub
+	return xloc;
+}
+public void setMovingup(boolean moving) {
+
+	this.movingup=moving;
+}
+
+public int getVelocity() {
+
+	return 6;
+}
+public int getflag() {
+	
+	return flag;
+}
+public int setflag(int x) {
+	
+	return this.flag=x;
+}
+
+	public Image getImage() throws SlickException {
+		
+		Image pineapple=new Image("res/pineapple.png");
+		return pineapple;
+	}
+}
